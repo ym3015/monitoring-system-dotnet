@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Monitoring.Domain\Monitoring.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Devices\" />
+    </ItemGroup>
+
 </Project>
