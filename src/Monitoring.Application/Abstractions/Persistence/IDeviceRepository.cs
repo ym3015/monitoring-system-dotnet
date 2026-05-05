@@ -1,6 +1,6 @@
 ﻿using Monitoring.Domain.Devices;
 
-namespace Monitoring.Application.Devices;
+namespace Monitoring.Application.Abstractions.Persistence;
 
 public interface IDeviceRepository
 {

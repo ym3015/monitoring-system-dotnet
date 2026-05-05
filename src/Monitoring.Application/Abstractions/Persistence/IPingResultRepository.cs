@@ -1,6 +1,6 @@
 ﻿using Monitoring.Domain.Ping;
 
-namespace Monitoring.Application.Ping;
+namespace Monitoring.Application.Abstractions.Persistence;
 
 public interface IPingResultRepository
 {
