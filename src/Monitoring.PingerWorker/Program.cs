@@ -1,13 +1,15 @@
-namespace Monitoring.PingerWorker;
+using Monitoring.Application.PingChecks.RunPingChecks;
+using Monitoring.Infrastructure;
+using Monitoring.PingerWorker;
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        var builder = Host.CreateApplicationBuilder(args);
-        builder.Services.AddHostedService<Worker>();
+var builder = Host.CreateApplicationBuilder(args);
 
-        var host = builder.Build();
-        host.Run();
-    }
-}
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddScoped<RunPingChecksUseCase>();
+
+builder.Services.AddHostedService<Worker>();
+
+var host = builder.Build();
+
+host.Run();
