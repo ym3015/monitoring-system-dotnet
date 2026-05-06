@@ -33,11 +33,13 @@ public sealed class Worker : BackgroundService
                 var useCase = scope.ServiceProvider
                                    .GetRequiredService<RunPingChecksUseCase>();
 
-                await useCase.ExecuteAsync(stoppingToken);
+                var result = await useCase.ExecuteAsync(stoppingToken);
 
                 _logger.LogInformation(
-                    "Ping checks completed at: {Time}",
-                    DateTimeOffset.Now);
+                    "Ping checks completed. Total: {TotalDevices}, Success: {SuccessfulPings}, Failed: {FailedPings}",
+                    result.TotalDevices,
+                    result.SuccessfulPings,
+                    result.FailedPings);
             }
             catch (OperationCanceledException)
             {
