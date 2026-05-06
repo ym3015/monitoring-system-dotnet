@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Options;
 using Monitoring.Application.PingChecks.RunPingChecks;
+using Monitoring.PingerWorker.Configurations;
 
 namespace Monitoring.PingerWorker;
 
@@ -6,13 +8,16 @@ public sealed class Worker : BackgroundService
 {
     private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly ILogger<Worker> _logger;
+    private readonly PingerOptions _options;
 
     public Worker(
         IServiceScopeFactory serviceScopeFactory,
-        ILogger<Worker> logger)
+        ILogger<Worker> logger,
+        IOptions<PingerOptions> options)
     {
         _serviceScopeFactory = serviceScopeFactory;
         _logger = logger;
+        _options = options.Value;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -43,7 +48,7 @@ public sealed class Worker : BackgroundService
                 _logger.LogError(ex, "Error while running ping checks");
             }
 
-            await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(_options.IntervalSeconds), stoppingToken);
         }
 
         _logger.LogInformation("Pinger worker stopped");
