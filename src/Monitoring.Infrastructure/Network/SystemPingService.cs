@@ -27,13 +27,11 @@ public sealed class SystemPingService : IPingService
             stopwatch.Stop();
 
             if (reply.Status == IPStatus.Success)
-            {
                 return new PingCheckResult(
                     ipAddress,
                     PingStatus.Success,
                     stopwatch.ElapsedMilliseconds,
                     null);
-            }
 
             return new PingCheckResult(
                 ipAddress,

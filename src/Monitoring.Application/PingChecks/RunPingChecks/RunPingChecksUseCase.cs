@@ -7,10 +7,10 @@ namespace Monitoring.Application.PingChecks.RunPingChecks;
 
 public sealed class RunPingChecksUseCase
 {
+        private readonly IDateTimeProvider _dateTimeProvider;
     private readonly IDeviceRepository _deviceRepository;
-    private readonly IPingService _pingService;
     private readonly IPingResultRepository _pingResultRepository;
-    private readonly IDateTimeProvider _dateTimeProvider;
+    private readonly IPingService _pingService;
 
     public RunPingChecksUseCase(
         IDeviceRepository deviceRepository,

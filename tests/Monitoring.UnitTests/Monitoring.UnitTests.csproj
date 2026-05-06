@@ -19,8 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Monitoring.Application\Monitoring.Application.csproj" />
-      <ProjectReference Include="..\..\src\Monitoring.Domain\Monitoring.Domain.csproj" />
+        <ProjectReference Include="..\..\src\Monitoring.Application\Monitoring.Application.csproj"/>
+        <ProjectReference Include="..\..\src\Monitoring.Domain\Monitoring.Domain.csproj"/>
     </ItemGroup>
 
 </Project>
