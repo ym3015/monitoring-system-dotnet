@@ -2,8 +2,9 @@
 using Monitoring.Application.Abstractions.Clock;
 using Monitoring.Application.Abstractions.Network;
 using Monitoring.Infrastructure.Clock;
+using Monitoring.Infrastructure.Network;
 
-namespace Monitoring.Infrastructure.Network;
+namespace Monitoring.Infrastructure;
 
 public static class DependencyInjection
 {
